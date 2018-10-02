@@ -1,0 +1,58 @@
+.flex-layout {
+	@media (min-width: $screen-md-min){
+		display: flex;
+	}
+	.left-col {
+		@media (min-width: $screen-md-min){
+			margin-right: 15px;
+		}
+		@media (min-width: $screen-lg-min){
+			margin-right: 30px;
+		}
+	}
+
+	@media (min-width: $screen-md-min){
+		// Two Col Left Wide
+		&.two-col-left-wide {
+			.left-col {
+				flex: 1;
+			}
+			.right-col {
+				flex: 0 1 335px;
+			}
+		}
+	}
+
+	// Two Col Right Wide
+	@media (min-width: $screen-md-min){
+		&.two-col-right-wide {
+			.left-col {
+				flex: 0 1 335px;
+			}
+			.right-col {
+				flex: 1;
+			}
+		}
+	}
+
+	// Equal Columns
+	@media (min-width: $screen-md-min){
+		&.equal-cols {
+			margin: 0 -15px;
+			> .col {
+				padding: 0 15px;
+				flex: 1;
+			}
+		}
+	}
+	@media (min-width: $screen-lg-min){
+		&.equal-cols {
+			margin: 0 -30px;
+			> .col {
+				padding: 0 30px;
+				flex: 1;
+			}
+		}
+	}
+	
+}

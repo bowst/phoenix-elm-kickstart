@@ -1,0 +1,134 @@
+<!-- <%= render_existing @view_module, "scripts.html", assigns %> -->
+<!-- <script>require("web/static/js/app")</script> -->
+
+<div class="app-wrapper no-flex">
+    <header id="header"></header>
+    <main id="main" role="main">
+        <section id="sign-up" class="sign-up">
+
+            <!-- left col -->
+            <div class="left-col">
+                <img src="/images/icons/hype-logo.svg" alt="Hype">
+            </div>
+
+            <!-- right col -->
+            <div class="right-col">
+                <div class="progress-bar">
+                    <div class="bar">
+                        <span class="progress" style="width: 0%;"></span>
+                    </div>
+                </div>
+                <h2>Let's get started. First let's set up your account.</h2>
+
+                <%= show_notification(@conn, :success)%>
+                <%= show_notification(@conn, :info)%>
+                <%= show_notification(@conn, :error)%>
+                <%= form_for @changeset, @action, [name: "sign-up", id: "sign-up"], fn f -> %>
+
+                <div class="form-group">
+                    <%= label f, :first_name, class: "control-label" do "First legal name" end %>
+                    <%= text_input f, :first_name, [class: "form-control", name: "first_name"] %>
+                    <%= error_tag f, :first_name %>
+                </div>
+                <div class="form-group">
+                    <%= label f, :last_name, class: "control-label" %>
+                    <%= text_input f, :last_name, [class: "form-control", name: "last_name"] %>
+                    <%= error_tag f, :last_name %>
+                </div>
+                <div class="form-group">
+                    <%= label f, :email, class: "control-label" %>
+                    <%= text_input f, :email, [class: "form-control", name: "email"] %>
+                    <%= error_tag f, :email %>
+                </div>
+                <br />
+                <div class="form-group">
+                    <%= label f, :username, class: "control-label" %>
+                    <%= text_input f, :username, [class: "form-control", name: "username"] %>
+                    <%= error_tag f, :username %>
+                </div>
+                <div class="form-group">
+                    <%= label f, :password, class: "control-label" %>
+                    <%= password_input f, :password, [class: "form-control", name: "password"] %>
+                    <span class="note">It is recommended that passwords be 8-20 characters</span>
+                    <%= error_tag f, :password %>
+                </div>
+                <div class="form-group">
+                    <%= label f, :password_confirmation, class: "control-label" do "Confirm Password" end %>
+                    <%= password_input f, :password_confirmation, [class: "form-control", name: "password_confirmation"] %>
+                    <%= error_tag f, :password_confirmation %>
+                </div>
+                <div class="btn-wrap">
+                    <%= submit "Sign Up", class: "btn btn-orange" %>
+                    <br />
+                </div>
+                <% end %>
+            </div>
+        </section>
+    </main>
+
+</div><!-- .app-wrapper -->
+<script src='<%= static_path(@conn, "/js/validate.js") %>'></script>
+
+<script>
+    var validator = new FormValidator('sign-up', [{
+        name: 'req',
+        display: 'required',
+        rules: 'required'
+    }, {
+        name: 'first_name',
+        rules: 'alpha_numeric|required'
+    }, {
+        name: 'last_name',
+        rules: 'alpha_numeric|required'
+    }, {
+        name: 'email',
+        rules: 'required|valid_email'
+    }, {
+        name: 'username',
+        rules: 'alpha_numeric|required'
+    }, {
+        name: 'password',
+        rules: 'required'
+    }, {
+        name: 'password_confirmation',
+        display: 'password confirmation',
+        rules: 'required|matches[password]'
+    }, {
+        name: 'minlength',
+        display: 'min length',
+        rules: 'min_length[8]'
+    }], function (errors, event) {
+
+        var error_ids = []
+        if (errors.length > 0) {
+            if (event && event.type == "submit") {
+                event.preventDefault();
+            }
+            console.log('errors', errors);
+            // Add error classes
+            errors.forEach(function (err) {
+                var target = document.getElementById(err.id);
+                error_ids.push(err.id)
+                target.classList.add("error");
+            })
+
+            // Remove error classes
+            var allInputs = document.getElementsByTagName('input');
+            var i;
+            for (i = 0; i < allInputs.length; i++) {
+                var elem = allInputs[i];
+                if (!elem.hasAttribute('id')) {
+                    continue;
+                }
+                elemId = elem.id;
+                if (error_ids.indexOf(elemId) == -1) {
+                    elem.classList.remove("error")
+                }
+            }
+        } else {
+            console.log('no errors', errors)
+            // submit the form
+            document.getElementById("sign-up").submit();
+        }
+    });
+</script>

@@ -1,0 +1,6 @@
+<script>
+  window.appContext = {
+    "user": <%= raw(Poison.encode!(@user)) %>
+  };
+</script>
+<script src="<%= static_path(@conn, "/js/" <> @app_name <> ".js") %>"></script>

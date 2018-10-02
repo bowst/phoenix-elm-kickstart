@@ -1,0 +1,34 @@
+<div class="app-wrapper">
+
+  <section id="login">
+    <%= show_notification(@conn, :success)%>
+    <%= show_notification(@conn, :info)%>
+    <%= show_notification(@conn, :error)%>
+
+    <div class="login-inner">
+      <!-- right col -->
+      <div class="right-col">
+        <%= form_for @changeset, "", fn f -> %>
+        <div class="form-group">
+          <%= label f, :email, class: "control-label" %>
+          <%= text_input f, :email, class: "form-control" %>
+          <%= error_tag f, :email %>
+        </div>
+        <div class="form-group">
+          <%= label f, :password, class: "control-label" %>
+          <%= password_input f, :password, class: "form-control" %>
+          <%= error_tag f, :password %>
+        </div>
+        <div class="actions">
+          <%= submit "Login", class: "btn btn-orange" %>
+          <br />
+          <a href="#">Forgot your password?</a>
+          <br />
+          <a href="/sign-up">Sign Up</a>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+</div><!-- .app-wrapper -->

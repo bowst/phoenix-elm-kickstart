@@ -1,0 +1,9 @@
+
+
+# Static artifacts
+node_modules
+elm-stuff
+
+dist/css
+dist/js
+

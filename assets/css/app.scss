@@ -1,0 +1,59 @@
+@import url('https://use.fontawesome.com/releases/v5.3.1/css/all.css');
+/*
+/// Variables
+@import 'vars';
+
+// Base
+@import 'base/reset';
+@import 'base/base';
+
+// Utilities
+@import 'utilities/functions';
+@import 'utilities/mixins';
+@import 'utilities/text-align';
+@import 'utilities/text-colors';
+@import 'utilities/text-size';
+@import 'utilities/flex-layouts';
+@import 'utilities/media-helpers';
+*/
+
+$primary: #003d5b;
+
+
+@import "~bulma/bulma";
+
+
+html,
+body,
+#layout{
+  height: 100%;
+}
+
+#layout{
+  display: flex;
+  flex-flow: column;
+
+  > div.columns{
+    margin: 0;
+    flex: 1;
+
+    > .column {
+      padding-bottom: 0;
+      overflow-y: auto;
+    }
+
+    > aside {
+      width: 200px;
+      padding: 0.75rem;
+    }
+  }
+
+}
+
+table{
+  width: 100%;
+}
+
+.level .title{
+  margin-bottom: 0px;
+}

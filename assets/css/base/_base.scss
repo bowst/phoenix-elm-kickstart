@@ -1,0 +1,70 @@
+// Default HTML styles
+
+/* Ensure no horizontal scroll */
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* Smoother fonts */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Body typography */
+body {
+	color: $grayBase;
+	font-family: $font-family-base;
+	line-height: $line-height-base;
+	font-size: 14px;
+	@media (min-width: $screen-md-min){
+		font-size: $font-size-base;
+	}
+}
+
+/* Links */
+a {
+	text-decoration: none;
+	color: $navy;
+	&:hover {
+		color: $orange;
+	}
+
+  cursor: pointer;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+	color: $black;
+	font-weight: bold;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+	&:first-child {
+		margin-top: 0;
+	}
+}
+h1 {
+	font-weight: $weightSemiBold;
+	font-size: $h1-font-size;
+}
+h2 { font-size: $h2-font-size; }
+h3 { font-size: $h3-font-size; }
+h4 { font-size: $h4-font-size; }
+h5 { font-size: $h5-font-size; }
+h6 { font-size: $h6-font-size; }
+
+/* Responsive images */
+img {
+  max-width: 100%;
+  height: auto;
+  width: auto;
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: $paragraphMargin;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

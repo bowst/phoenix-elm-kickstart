@@ -1,0 +1,21 @@
+@mixin alert-variant($background, $border, $color) {
+  color: $color;
+  @include gradient-bg($background);
+  border-color: $border;
+
+  hr {
+    border-top-color: darken($border, 5%);
+  }
+
+  .alert-link {
+    color: darken($color, 10%);
+  }
+}
+
+@mixin gradient-bg($color) {
+  @if $enable-gradients {
+    background: $color linear-gradient(180deg, mix($body-bg, $color, 15%), $color) repeat-x;
+  } @else {
+    background-color: $color;
+  }
+}

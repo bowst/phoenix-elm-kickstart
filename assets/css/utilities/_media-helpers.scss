@@ -1,0 +1,41 @@
+// Hide for Mobile
+@media (min-width: $screen-sm-min - 1){
+	.mobile-hide-sm {
+		display: none;
+	}
+}
+
+@media (min-width: $screen-md-min - 1){
+	.mobile-hide-md {
+		display: none;
+	}
+}
+
+@media (min-width: $screen-lg-min - 1){
+	.mobile-hide-lg {
+		display: none;
+	}
+}
+
+
+// Show for Desktop
+.mobile-show-sm {
+	display: none;
+	@media (min-width: $screen-sm-min){
+		display: block;
+	}
+}
+
+.mobile-show-md {
+	display: none;
+	@media (min-width: $screen-md-min){
+		display: block;
+	}
+}
+
+.mobile-show-lg {
+	display: none;
+	@media (min-width: $screen-lg-min){
+		display: block;
+	}
+}
